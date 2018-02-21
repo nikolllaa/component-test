@@ -1,0 +1,189 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col main-column">
+            <particles [params]="particlesParams" [style]="particlesStyle" [width]="particlesWidth"
+                       [height]="particlesHeight"></particles>
+            <div class="main-container">
+                <h2>Project Explorer</h2>
+            </div>
+            <div class="row homepage-main">
+                <div class="col-md-6 text-center">
+                    <div class="form-group homepage-form">
+                        <form role="search" action="search" name="searchform">
+                            <div class="input-group inp-colR inp-col3">
+                                <input (keyup.enter)="searchService.doSearch(searchString)" [(ngModel)]="searchString"
+                                       type="search" class="form-control input-lg autofocus"
+                                       placeholder="Search Project" name="main-search"
+                                       id="searchinput">
+                                <span (click)="removeSearch()" class="fa fa-remove search-clear"></span>
+                                <span (click)="searchService.doSearch(searchString)" class="input-group-addon btn"
+                                      id="state-addon">
+                                    <span class="fa fa-search search-icon"></span>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col chip-list">
+                    <mat-chip-list align="center">
+                        <mat-chip>PRO/BTC<br>PRO {{stats.proBTC}}</mat-chip>
+                        <mat-chip>PRO/USD<br>USD {{stats.proUSD}}</mat-chip>
+                        <mat-chip>Circulating Supply<br>{{stats.supply}} PRO</mat-chip>
+                        <mat-chip>Last Block<br>{{stats.lastBlock}}</mat-chip>
+                        <mat-chip>Block Time<br>{{stats.blockTime}} sec</mat-chip>
+                        <mat-chip>Difficulty<br>{{stats.difficulty}} T</mat-chip>
+                        <mat-chip>Hashrate<br>{{stats.hashRate}} GH</mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row central-content">
+            <div class="col-xs-12 col-sm-12 col-md-12, col-lg-4">
+                <div class="blocks-card">
+                    <div class="block-header">
+                        <h2>Blocks</h2>
+                    </div>
+                    <div class="block-content">
+                        <div class="container">
+                            <chart [options]="blocksChartsOptions"
+                                   (load)="saveBlockChartInstance($event.context)"></chart>
+                        </div>
+                        <div class="main-table table-responsive">
+                            <mat-progress-spinner class="spinnerElement"
+                                                  [ngClass]="(spinnerObject.showBlockSpinner == true) ? 'spinner-visible':'spinner-hidden'"
+                                                  [color]="spinnerColor" [mode]="spinnerMode"
+                                                  [value]="spinnerValue"></mat-progress-spinner>
+                            <table *ngIf="blocks" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Block #</th>
+                                    <th>Miner</th>
+                                    <th>Tx #</th>
+                                    <th>Time</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let block of blocks">
+                                    <td><a href="/block/{{block.blockNumber}}">{{block.blockNumber}}</a>
+                                    </td>
+                                    <td><a href="/address/{{block.miner}}">{{block.truncMiner}}</a>
+                                    </td>
+                                    <td>{{block.time}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="!blocks" class="no-blocks">Waiting for blocks...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12, col-lg-4">
+                <div class="transactions-card">
+                    <div class="block-header">
+                        <h2>Transactions</h2>
+                    </div>
+                    <div class="block-content">
+                        <div class="container">
+                            <chart [options]="transactionsChartsOptions"
+                                   (load)="saveTransactionChartInstance($event.context)"></chart>
+                        </div>
+                        <div class="main-table table-responsive">
+                            <mat-progress-spinner class="spinnerElement"
+                                                  [ngClass]="(spinnerObject.showTxSpinner == true) ? 'spinner-visible':'spinner-hidden'"
+                                                  [color]="spinnerColor" [mode]="spinnerMode"
+                                                  [value]="spinnerValue"></mat-progress-spinner>
+                            <table *ngIf="transactions" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Tx Hash</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let transaction of transactions">
+                                    <td><a href="/tx/{{transaction.txHash}}">{{transaction.truncHash}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="/address/{{transaction.from}}">{{transaction.truncFrom}}</a>
+                                    </td>
+                                    <td><a href="/address/{{transaction.to}}">{{transaction.truncTo}}</a>
+                                    </td>
+                                    <td>{{transaction.amount}} PRO</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="!transactions" class="no-transactions">Waiting for transactions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12, col-lg-4">
+                <div class="pending-tx-card">
+                    <div class="block-header">
+                        <h2>PENDING TX</h2>
+                    </div>
+                    <div class="block-content">
+                        <div class="container">
+                            <chart [options]="pendingTransactionsChartsOptions"
+                                   (load)="savePendingTransactionChartInstance($event.context)"></chart>
+                        </div>
+                        <div class="main-table table-responsive">
+                            <mat-progress-spinner class="spinnerElement"
+                                                  [ngClass]="(spinnerObject.showPendingTxSpinner == true) ? 'spinner-visible':'spinner-hidden'"
+                                                  [color]="spinnerColor" [mode]="spinnerMode"
+                                                  [value]="spinnerValue"></mat-progress-spinner>
+                            <table *ngIf="pendingTransactions" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let pendingTransaction of pendingTransactions">
+                                    <td>
+                                        <a href="/address/{{pendingTransaction.from}}">{{pendingTransaction.truncFrom}}</a>
+                                    </td>
+                                    <td><a href="/address/{{pendingTransaction.to}}">{{pendingTransaction.truncTo}}</a>
+                                    </td>
+                                    <td>{{pendingTransaction.amount}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="!pendingTransactions" class="no-pending-transactions">Waiting for pending
+                                transactions
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col info-content">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img class="animated-spinner" src="assets/images/spinner.svg">
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="home-stats">
+                        <h4>Stats:</h4>
+                        <h5>Number of blocks - <span>{{numberOfBlocks}}</span></h5>
+                        <h5>Number of transactions - <span>{{stats.txCount}}</span></h5>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img class="animated-spinner" src="assets/images/spinner.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,465 @@
+@import "../../../assets/css/variables";
+
+app-main {
+  .main-column {
+    background: map_get($colors, lighter-blue);
+    background-size: cover !important;
+    padding-bottom: 70px;
+    -webkit-box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+    -moz-box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+    box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+
+    .main-logo {
+      display: flex;
+      justify-content: center;
+      padding-top: 5%;
+      padding-bottom: 4%;
+      margin-bottom: -5%;
+
+      img {
+        width: 200px;
+      }
+    }
+
+    canvas {
+      position: fixed;
+    }
+
+    .main-container {
+      color: map_get($colors, lightest-blue);
+      font-size: 24px;
+      text-align: center;
+      padding-top: 50px;
+      padding-bottom: 40px;
+
+      h2 {
+        font-size: 40px;
+        color: map_get($colors, white);
+
+        &:hover {
+          color: map_get($colors, black);
+        }
+      }
+    }
+
+    .homepage-main {
+      justify-content: center;
+    }
+
+    form {
+      -webkit-box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+      -moz-box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+      box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+
+      input {
+        margin-right: -25px;
+        height: 46px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 6px;
+        border-color: map_get($colors, black);
+      }
+
+      .search-clear {
+        z-index: map_get($z-indexes, z-index-100);
+        color: map_get($colors, gray);
+        line-height: 2.8;
+
+        &:hover {
+          color: map_get($colors, light-gray);
+        }
+      }
+
+      .input-group-addon {
+        border-color: map_get($colors, black);
+        background: map_get($colors, lightest-gray);
+
+        .search-icon {
+          font-size: 1.2em;
+          transform: scale(-1, 1);
+          margin-left: 13px;
+          margin-right: 4px;
+        }
+
+        &:hover {
+          background: map_get($colors, mid-gray);
+        }
+
+        &:hover .search-icon {
+          color: map_get($colors, white);
+        }
+      }
+    }
+
+    .chip-list {
+      padding-top: 30px;
+
+      .mat-chip-list-wrapper {
+        justify-content: center;
+        padding-left: 70px;
+        padding-right: 70px;
+
+        mat-chip {
+          border: none;
+          -webkit-box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+          -moz-box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+          box-shadow: 0 6px 12px -2px map_get($colors, rgba-dark);
+        }
+
+        mat-chip:hover {
+          background: map_get($colors, white);
+          border: none;
+        }
+
+        mat-chip:first-child {
+          background: map_get($colors, cyan-blue);
+          color: map_get($colors, rgba-darker);
+        }
+
+        mat-chip:nth-child(2) {
+          background: map_get($colors, yellow);
+          color: map_get($colors, rgba-darker);
+        }
+
+        mat-chip:nth-child(3) {
+          background: map_get($colors, light-green);
+          color: map_get($colors, rgba-darker);
+        }
+
+        mat-chip:nth-child(4) {
+          background: map_get($colors, pink);
+          color: map_get($colors, rgba-darker);
+        }
+
+        mat-chip:nth-child(5) {
+          background: map_get($colors, light-green);
+          color: map_get($colors, rgba-darker);
+        }
+
+        mat-chip:nth-child(6) {
+          background: map_get($colors, yellow);
+          color: map_get($colors, rgba-darker);
+        }
+
+        mat-chip:nth-child(7) {
+          background: map_get($colors, cyan-blue);
+          color: map_get($colors, rgba-darker);
+        }
+
+      }
+    }
+  }
+  .container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .central-content {
+    padding-top: 50px;
+
+    .blocks-card {
+      .highcharts-container {
+        margin-bottom: -90px;
+        display: flex;
+        margin: 0 auto;
+        position: initial;
+        width: 100% !important;
+        margin-top: -70px;
+        margin-bottom: -70px;
+      }
+
+      .main-table {
+        height: 400px;
+        font-size: 10px;
+        margin-top: 50px;
+
+        .table thead th {
+          font-size: 10px;
+        }
+
+        .table td {
+          padding: 6px !important;
+        }
+
+        .table-hover {
+          text-align: center;
+        }
+
+        .column-pool {
+          width: 20%;
+        }
+
+        .all-blocks-number {
+          color: map_get($colors, blue) !important;
+          font-size: 10px !important;
+        }
+
+        .col-lg-12 {
+          h5 {
+            line-height: 2;
+          }
+        }
+
+        .no-blocks {
+          font-size: 20px;
+          padding-top: 50px;
+        }
+      }
+    }
+
+    .block-content a {
+      font-size: 10px;
+    }
+
+    .transactions-card {
+      .highcharts-container {
+        display: flex;
+        margin: 0 auto;
+        position: initial;
+        width: 100% !important;
+        margin-top: -70px;
+        margin-bottom: -70px;
+      }
+
+      .main-table {
+        height: 400px;
+        font-size: 10px;
+        margin-top: 50px;
+
+        .table thead th {
+          font-size: 10px;
+        }
+
+        .table td {
+          padding: 6px !important;
+        }
+
+        .table-hover {
+          text-align: center;
+        }
+
+        .all-blocks-number {
+          color: map_get($colors, blue) !important;
+          font-size: 10px !important;
+        }
+
+        .col-lg-12 {
+          h5 {
+            line-height: 2;
+          }
+        }
+
+        .no-transactions {
+          font-size: 20px;
+          padding-top: 50px;
+        }
+      }
+    }
+
+    .pending-tx-card {
+      .highcharts-container {
+        display: flex;
+        margin: 0 auto;
+        position: initial;
+        width: 100% !important;
+        margin-top: -70px;
+        margin-bottom: -70px;
+      }
+
+      .main-table {
+        height: 400px;
+        font-size: 10px;
+        margin-top: 50px;
+
+        .table thead th {
+          font-size: 10px;
+        }
+
+        .table td {
+          padding: 6px !important;
+        }
+
+        .table-hover {
+          text-align: center;
+        }
+
+        .all-blocks-number {
+          color: map_get($colors, blue) !important;
+          font-size: 12px !important;
+        }
+
+        .col-lg-12 {
+          h5 {
+            line-height: 2;
+          }
+        }
+
+        .no-pending-transactions {
+          font-size: 20px;
+          padding-top: 50px;
+        }
+      }
+    }
+
+    .blocks-card,
+    .transactions-card,
+    .pending-tx-card {
+      border: 1px solid #ddd;
+      text-align: center;
+      margin-bottom: 20px;
+      background-color: map_get($colors, white);
+      border-radius: 4px;
+      -webkit-box-shadow: 0 1px 1px map_get($colors, rgba-light);
+      box-shadow: 0 1px 1px map_get($colors, rgba-light);
+
+      .block-header {
+        color: map_get($colors, lightest-gray);
+        background-color: map_get($colors, lighter-blue);
+        border-color: map_get($colors, light-gray);
+        padding: 10px 15px;
+        border-bottom: 1px solid map_get($colors, transparent);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+
+        h2 {
+          font-size: 18px;
+          margin-left: 8px;
+          color: map_get($colors, white);
+          margin-top: 10px;
+        }
+      }
+
+      .block-content {
+        margin-top: 40px;
+
+        h4 {
+          padding-top: 20px;
+          padding-bottom: 10px;
+        }
+
+        a {
+          word-break: break-all;
+          color: map_get($colors, sea-blue);
+          font-size: 10px;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .block-footer {
+        padding: 10px 15px;
+        background-color: map_get($colors, lighter-blue);
+        border-top: 1px solid map_get($colors, light-gray);
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+
+        a {
+          color: map_get($colors, white);
+          font-size: 18px;
+          text-decoration: none;
+
+          &:hover {
+            color: map_get($colors, light-gray);
+          }
+        }
+      }
+    }
+  }
+
+  .info-content {
+    padding-bottom: 20px;
+
+    a {
+      color: map_get($colors, sea-blue);
+    }
+  }
+
+  .animated-spinner {
+    width: 50px;
+  }
+
+  #searchinput {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: map_get($breakpoints, extra-large)) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: map_get($breakpoints, small-480)) {
+  form {
+    input {
+      font-size: 10.5px;
+    }
+  }
+}
+
+@media (min-width: map_get($breakpoints, mid-769)) and (max-width: map_get($breakpoints, tablet-920)) {
+  form {
+    input {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: map_get($breakpoints, tablet-681)) and (max-width: map_get($breakpoints, tablet-mid)) {
+  .main-logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 15% !important;
+  }
+}
+
+@media (max-width: map_get($breakpoints, small-468)) {
+  .chip-list {
+    mat-chip:first-child,
+    mat-chip:nth-child(2),
+    mat-chip:nth-child(3),
+    mat-chip:nth-child(4),
+    mat-chip:nth-child(5),
+    mat-chip:nth-child(6),
+    mat-chip:nth-child(7) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (min-width: map_get($breakpoints, tablet-max)) and (max-width: map_get($breakpoints, extra-large)) {
+  app-main {
+    .central-content {
+      .blocks-card .block-footer a,
+      .transactions-card .block-footer a,
+      .pending-tx-card .block-footer a {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media (min-width: map_get($breakpoints, mid)) and (max-width: map_get($breakpoints, tablet-max)) {
+  app-main {
+    .central-content {
+      .blocks-card,
+      .transactions-card,
+      .pending-tx-card {
+        .highcharts-container {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: map_get($breakpoints, tablet-681)) and (max-width: map_get($breakpoints, tablet-mid)) {
+  app-main {
+    .container-fluid {
+      margin-top: 30px;
+    }
+  }
+}
